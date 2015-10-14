@@ -142,6 +142,40 @@ html, body {
 
 
 
+
+
+//
+// Messaging
+// -------------------------------------
+.chat {
+  position: absolute;
+  z-index: 1030;
+  background-color: #FFF;
+  top: 0;
+  right: 0;
+  box-shadow: 0 0 5px rgba(0,0,0,.5);
+  .messages {
+    padding: 5px 5px 25px;
+    border-top: 5px solid #ddd;
+    font-size: 12px;
+    max-height: 300px;
+    overflow: auto;
+  }
+  .form-inline {
+    padding: 5px;
+    border-top: 1px solid #DDD;
+    p {
+      border-top: 1px solid #DDD;
+      padding-top: 5px;
+    }
+  }
+}
+
+
+
+
+
+
 /*!
  * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
  * Code licensed under the Apache License v2.0.

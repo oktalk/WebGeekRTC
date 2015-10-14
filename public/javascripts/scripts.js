@@ -4,6 +4,7 @@ $(function () {
 	var peer = new Peer(peerId, {key: "vpzfzavxowjc3di"});
 	var myFeed;
 
+
 	navigator.getUserMedia = navigator.getUserMedia ||
 														navigator.webkitGetUserMedia ||
 														navigator.mozGetUserMedia ||
@@ -23,6 +24,8 @@ $(function () {
 	});
 
 
+	$('#self .caption').html(peerId);
+
 	// Caller functions
 	$("#call").click(function() {
 		var connectPeer = prompt("Enter ID to connect to");
@@ -34,10 +37,15 @@ $(function () {
 
 		dataConn.on("data", function(data) {
 			console.log(data);
+			$('#chat .messages').append('<p class="callerfn">'+data+'</p>');
 		});
 
-		$("#textchat").click(function() {
-			sendMessage(dataConn, "Hello World");
+		$("#submit").click(function(e) {
+			e.preventDefault();
+			var msg = $('#textInput').val();
+			$('#chat .messages').append('<p class="callerfn">'+msg+'</p>');
+			sendMessage(dataConn, msg);
+			console.log('caller');
 		});
 	});
 
@@ -53,12 +61,19 @@ $(function () {
 		peer.on("connection", function(dataConn) {
 			dataConn.on("data", function(data) {
 				console.log(data);
+				$('#chat .messages').append('<p class="calledfn">'+data+'</p>');
 			});
 
-			$("#textchat").click(function() {
-				sendMessage(dataConn, "Hey Buddy");
+			$("#submit").click(function(e) {
+				e.preventDefault();
+				var msg = $('#textInput').val();
+				$('#chat .messages').append('<p class="calledfn">'+msg+'</p>');
+				sendMessage(dataConn, msg);
+				console.log('called');
 			});
+
 		});
+
 	});
 
 

@@ -123,18 +123,25 @@
     </div>
     <!-- /#wrapper -->
 
+    <div id="chat" class="chat">
+      <div class="messages"></div>
+      <div class="form-inline text-input">
+        <input id="textInput" type="text" class="form-control">
+        <a href="#" id="submit" class="btn btn-primary"><i class="fa fa-angle-right"></i></a>
+      </div>
+    </div>
+
     <div id="participants" class="video-call-participants bottom fixedsticky">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-xs-2 pull-right">
-            <!--a href="#" class="thumbnail" role="button">
-              <img src="http://dummyimage.com/180x100/000/fff" alt="Participant">
-            </a-->
+          <div id="self" class="col-xs-2 pull-right">
 						<video id="my-cam" width="180" height="100" autoplay></video>
+            <div class="text-center caption">{{peerId}}</div>
           </div>
-          <div class="col-xs-1 pull-right">
+          <div id="other" class="col-xs-1 pull-right">
             <a href="#" class="thumbnail" role="button">
               <img src="http://dummyimage.com/100x100/000/fff" alt="me">
+              <div class="caption">{{connectPeer}}</div>
             </a>
           </div>
         </div>
